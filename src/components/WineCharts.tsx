@@ -27,25 +27,63 @@ export const WineCharts = () => {
     ],
     []
   );
+    const getLabel = React.useCallback(series => series.specialLabel + 'fff', [])
+
+
+    const getDatums = React.useCallback(series => series.data, [])
+
+    // Use the original data object and the datum index to reference the datum's primary value.
+
+    // Use data.lines[n].data[n].value as each datums secondary value
+    const getSecondary = React.useCallback(datum => datum.value, [])
 
   const axes = React.useMemo(
     () => [
-      { primary: true, type: "linear", position: "bottom" },
-      { type: "linear", position: "left" },
+      { primary: true, type: "linear", position: "bottom",options: {
+              scales: {
+                  xAxes: [{
+                      type: 'time',
+                  }]
+              },
+              options: {
+                  scales: {
+                      y: {
+                          ticks: {
+                              // Include a dollar sign in the ticks
+                              callback: function(value, index, ticks) {
+                                  return '$' + value;
+                              }
+                          }
+                      }
+                  }
+              }} },
+      { type: "linear", position: "left", options: {
+              scales: {
+                  y: {
+                      ticks: {
+                          // Include a dollar sign in the ticks
+                          callback: function(value, index, ticks) {
+                              return '$' + value;
+                          }
+                      }
+                  }
+              }
+          }},
     ],
     []
   );
+
 
   const lineChart = (
     // A react-chart hyper-responsively and continuously fills the available
     // space of its parent element automatically
     <div
       style={{
-        width: "300px",
+        width: "100%",
         height: "300px",
       }}
     >
-      <Chart data={data} axes={axes} />
+      <Chart  ticks={[10,20,50,200,500,1000]}   data={data} axes={axes}     />
     </div>
   );
   return lineChart;

@@ -7,6 +7,7 @@ import { useStore } from "./store/store";
 import { MainPage } from "./components/MainPage";
 import { Route, Router, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
+import {NewChart} from "./components/NewChart";
 
 // import { Switch } from "react-router";
 
@@ -45,7 +46,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/game" element={<h1>sdfdsf</h1>} />
+          <Route path="/game" element={<NewChart/>} />
           <Route path="/leaderboard" element={<h1>sdfdsf</h1>} />
         </Routes>
       </BrowserRouter>

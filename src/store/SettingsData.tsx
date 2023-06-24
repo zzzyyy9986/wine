@@ -5,7 +5,11 @@ class SettingsData {
   public currentAreaId: string = "";
   public currentHistoryDateIndex: number = 0;
   public currentAreaTitle: string = "";
-  public currentHistoryDate: string = "";
+  public currentHistoryDateStart: string = "";
+  public currentHistoryDateFinish: string = "";
+
+
+  public settingWidth:number = 30;
 
   constructor() {
     makeAutoObservable(this);

@@ -8,12 +8,12 @@ export const ListOfHistoryData = observer(({ areaId }: { areaId: string }) => {
   return (
     <div>
       <ul className="list-group mt-4">
-        {globalSettings.currentHistoryDate}
+        {globalSettings.currentHistoryDateStart}
         <li className="list-group-item">
           Влажность:
           {
             globalEnvData.data[globalSettings.currentAreaTitle].history[
-              globalSettings.currentHistoryDate
+              globalSettings.currentHistoryDateStart
             ].airHumidity
           }
         </li>
@@ -21,7 +21,7 @@ export const ListOfHistoryData = observer(({ areaId }: { areaId: string }) => {
           Температура:
           {
             globalEnvData.data[globalSettings.currentAreaTitle].history[
-              globalSettings.currentHistoryDate
+              globalSettings.currentHistoryDateStart
             ].temperature
           }
         </li>
@@ -29,7 +29,7 @@ export const ListOfHistoryData = observer(({ areaId }: { areaId: string }) => {
           Скорость ветра:
           {
             globalEnvData.data[globalSettings.currentAreaTitle].history[
-              globalSettings.currentHistoryDate
+              globalSettings.currentHistoryDateStart
             ].windSpeed
           }
         </li>

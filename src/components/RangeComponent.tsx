@@ -1,12 +1,15 @@
 import { Range } from "react-range";
 import * as React from "react";
 import { useState } from "react";
+import {useStore} from "../store/store";
 
 export const RangeComponent = () => {
-  const [data, setData] = useState({ values: [0] });
+    const { globalSettings, globalEnvData } = useStore();
+    const [data, setData] = useState({ values: [globalSettings.settingWidth] });
 
   const onRangeChange = (values) => {
     setData({ values: values });
+      globalSettings.settingWidth = values[0]
   };
 
   return (
@@ -23,7 +26,7 @@ export const RangeComponent = () => {
     >
       <Range
         step={1}
-        min={0}
+        min={30}
         max={100}
         values={data.values}
         onChange={(values) => {

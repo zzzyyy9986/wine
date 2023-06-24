@@ -5,12 +5,13 @@ import { ListOfHistoryData } from "./ListOfHistoryData";
 import React from "react";
 import { FavoritesMap } from "./FavoriteMap";
 import { RangeComponent } from "./RangeComponent";
+import {NewChart} from "./NewChart";
 
 export const MainPage = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-12" style={{height:100 +'vh'}}>
           <SettingPanel />
           <RangeComponent />
           <FavoritesMap />
@@ -27,13 +28,18 @@ const SettingPanel = observer(() => {
       {globalSettings.currentAreaId && (
         <div
           className="bg-white mt-4 setting-panel"
-          style={{ padding: 10 + "px", width: "30%" }}
+          style={{ padding: 10 + "px", width: globalSettings.settingWidth +  "%" }}
         >
           {globalSettings.currentAreaId && globalSettings.currentAreaTitle && (
-            <div>
+            <div style={{width:'auto',height:'auto'}}>
               <h3 style={{ padding: 5 + "px" }}>Панель показателей</h3>
+
+
               <RangeHistory />
-              {globalSettings.currentHistoryDate && (
+
+
+
+              {globalSettings.currentHistoryDateStart && (
                 <ListOfHistoryData areaId={globalSettings.currentAreaId} />
               )}
             </div>
