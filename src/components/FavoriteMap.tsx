@@ -67,8 +67,14 @@ export const FavoritesMap = observer(() => {
         attribution="&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {globalEnvData.dataAr.map((item, index) => {
-        return <AreaComponent item={item} key={item.id} />;
+      {Object.keys(globalEnvData.data).map((key, index) => {
+        return (
+          <AreaComponent
+            item={globalEnvData.data[key]}
+            title={key}
+            key={globalEnvData.data[key].id}
+          />
+        );
       })}
 
       {/*59.91174337077401, 10.750425582038146*/}
@@ -95,14 +101,16 @@ export const FavoritesMap = observer(() => {
 
 export interface IAreaComponent {
   item: IDataRow;
+  title: string;
   key: any;
 }
 
-const AreaComponent = observer(({ item }: IAreaComponent) => {
+const AreaComponent = observer(({ item, title }: IAreaComponent) => {
   const { globalSettings, globalEnvData } = useStore();
   const openAreaInfo = () => {
     globalSettings.dateRange = globalEnvData.dataAr;
     globalSettings.currentAreaId = item.id;
+    globalSettings.currentAreaTitle = title;
   };
   return (
     <Rectangle key={item.id} bounds={item.coordinates}>
