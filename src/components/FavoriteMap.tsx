@@ -7,6 +7,7 @@ import {
   TileLayer,
   Rectangle,
   useMapEvents,
+  Polygon,
 } from "react-leaflet";
 import React from "react";
 import { IChocolate } from "./Chocolate";
@@ -22,45 +23,6 @@ export const FavoritesMap = observer(() => {
   const position: LatLngExpression = [44.543011, 38.084849];
   const zoom: number = 15;
   const { globalEnvData } = useStore();
-
-  const list: IChocolate[] = [
-    {
-      productName: "Varm belgisk sjokolade",
-      englishProductName: "Belgian hot chocolate",
-      vendor: "Steam kaffebar",
-      location: "Jernbanetorget 1, Østbanehallen",
-      lat: 59.91088362120013,
-      lon: 10.752799203777597,
-    },
-    {
-      productName: "Varm sjokolade",
-      englishProductName: "Hot chocolate",
-      vendor: "Kaffebrenneriet",
-      location: "Karl Johans gate 7, Arkaden",
-      lat: 59.91181003626315,
-      lon: 10.747782602301388,
-    },
-    {
-      productName: "Sjokolade på pinne",
-      englishProductName: "Hot chocolate on a stick",
-      vendor: "Espresso House",
-      location: "Jernbanetorget 1, Østbanehallen",
-      lat: 59.91201090441835,
-      lon: 10.751298468298101,
-      description: "Seasonally available",
-    },
-  ];
-  const icon: L.DivIcon = L.divIcon({
-    className: "hot-chocolate-icon",
-    iconSize: [30, 30],
-    iconAnchor: [0, 0],
-    popupAnchor: [15, 0],
-  });
-
-  const point = [
-    [51.49, -0.08],
-    [51.5, -0.06],
-  ];
   return (
     <MapContainer center={position} zoom={zoom} scrollWheelZoom={false}>
       <TileLayer
@@ -76,25 +38,6 @@ export const FavoritesMap = observer(() => {
           />
         );
       })}
-
-      {/*59.91174337077401, 10.750425582038146*/}
-      <Rectangle
-        bounds={[
-          [44.54234, 38.08767],
-          [44.54137, 38.0876],
-        ]}
-      >
-        <Popup>
-          <strong
-            onClick={() => {
-              alert("dd");
-            }}
-          >
-            hey
-          </strong>
-        </Popup>
-      </Rectangle>
-      <CustomReact />
     </MapContainer>
   );
 });
@@ -113,7 +56,7 @@ const AreaComponent = observer(({ item, title }: IAreaComponent) => {
     globalSettings.currentAreaTitle = title;
   };
   return (
-    <Rectangle key={item.id} bounds={item.coordinates}>
+    <Polygon key={item.id} positions={item.coordinates}>
       <Popup>
         <div onClick={openAreaInfo}>
           <button type="button" className="btn btn-warning">
@@ -124,6 +67,6 @@ const AreaComponent = observer(({ item, title }: IAreaComponent) => {
           Текущее состояние
         </button>
       </Popup>
-    </Rectangle>
+    </Polygon>
   );
 });

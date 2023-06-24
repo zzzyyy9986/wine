@@ -4,13 +4,12 @@ import "./App.css";
 import { IDataRow } from "./interfaces/IDataRow";
 import { uuidv4 } from "./utils";
 import { useStore } from "./store/store";
-import { RangeHistory } from "./components/RangeHistory";
-import { ListOfHistoryData } from "./components/ListOfHistoryData";
-import { observer } from "mobx-react-lite";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { MainPage } from "./components/MainPage";
+import { Route, Router, Routes } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 
 // import { Switch } from "react-router";
+
 const App = () => {
   const { globalEnvData } = useStore();
   const addComponent = () => {
@@ -42,13 +41,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router>
+      {/*<MainPage />*/}
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/game" element={<h1>sdfdsf</h1>} />
           <Route path="/leaderboard" element={<h1>sdfdsf</h1>} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
   {
