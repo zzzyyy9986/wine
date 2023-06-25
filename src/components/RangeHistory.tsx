@@ -24,38 +24,54 @@ export const RangeHistory = observer(() => {
   };
 
   return (
-    <div style={{height:700*globalSettings.settingWidth/100 +'px'}}>
-      <select
-        className="form-control"
-        value={globalSettings.currentHistoryDateStart}
-        onChange={(e) => {
-          onHistoryDateChange(e);
-        }}
-      >
-        {globalEnvData.ArOfHistoricalDates.map((el) => {
-          return (
-            <option id={el} value={el}>
-              {el}
-            </option>
-          );
-        })}
-      </select>
-        <select
-            className="form-control"
-            value={globalSettings.currentHistoryDateFinish}
-            onChange={(e) => {
-                onHistoryDateChange(e);
-            }}
-        >
-            {globalEnvData.ArOfHistoricalDates.map((el) => {
-                return (
-                    <option id={el} value={el}>
-                        {el}
-                    </option>
-                );
-            })}
-        </select>
-      <NewChart />
-    </div>
+      <div>
+          <div className='row' style={{height:550*globalSettings.settingWidth/100 +'px'}}>
+              <form className='col-md-4'>
+                  <div className="mb-2">
+                      <select
+                          className="form-control"
+                          value={globalSettings.currentHistoryDateStart}
+                          onChange={(e) => {
+                              onHistoryDateChange(e);
+                          }}
+                      >
+                          {globalEnvData.ArOfHistoricalDates.map((el) => {
+                              return (
+                                  <option id={el} value={el}>
+                                      {el}
+                                  </option>
+                              );
+                          })}
+                      </select>
+                  </div>
+                  <div className='mb-2'>
+                      <select
+                          className="form-control"
+                          value={globalSettings.currentHistoryDateFinish}
+                          onChange={(e) => {
+                              onHistoryDateChange(e);
+                          }}
+                      >
+                          {globalEnvData.ArOfHistoricalDates.map((el) => {
+                              return (
+                                  <option id={el} value={el}>
+                                      {el}
+                                  </option>
+                              );
+                          })}
+                      </select>
+                  </div>
+                  <button className='btn btn-warning'>Запросить</button>
+              </form>
+              <div className="col-md-8">
+                  <NewChart />
+              </div>
+          </div>
+          {/*<div className="row" >*/}
+          {/*    <div className="col-md-12">*/}
+          {/*        <NewChart />*/}
+          {/*    </div>*/}
+          {/*</div>*/}
+      </div>
   );
 });
