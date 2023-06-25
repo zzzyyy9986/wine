@@ -1,11 +1,4 @@
-export interface IHistData {
-    temperature:number,
-    airHumidity:number,
-    windSpeed:number,
-    //осадки
-    precipitation:number,
-
-
+export interface IPridictionData {
     alcohol: number,
     chlorides: number,
     citric_acid: number,
@@ -19,6 +12,5 @@ export interface IHistData {
     total_sulfur_dioxide: number,
     volatile_acidity: number,
     winecolor: string
-
 
 }

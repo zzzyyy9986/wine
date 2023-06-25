@@ -3,11 +3,15 @@ import { makeAutoObservable } from "mobx";
 import { IDataRow } from "../interfaces/IDataRow";
 import { uuidv4 } from "../utils";
 import { gSettings } from "./SettingsData";
+import {IPridictionData} from "../interfaces/IPridictionData";
 
 export class EnvData {
   public data: {
     [title: string]: IDataRow;
   } = {};
+  public predictionData:IPridictionData = {
+
+  } as IPridictionData
 
   constructor() {
     makeAutoObservable(this);

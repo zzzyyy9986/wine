@@ -9,6 +9,8 @@ import {SettingPanel} from "../enums/SettingPanel";
 import axios from "axios";
 import {serverUrl} from "../env";
 import {getHistory, getLastHistoryItem} from "../queries";
+import {MenuTabs} from "./MenuTabs";
+import {PredictionForm} from "./PredictionForm";
 
 // import * as Popup from "../../node_modules/react-leaflet-editable-popup/build/EditablePopup";
 
@@ -16,9 +18,11 @@ export const FavoritesMap = observer(() => {
   // Default coordinates set to Oslo central station
   const position: LatLngExpression = [44.543011, 38.084849];
   const zoom: number = 15;
-  const { globalEnvData } = useStore();
+  const { globalEnvData,globalSettings } = useStore();
   return (
     <MapContainer center={position} zoom={zoom} scrollWheelZoom={false}>
+      <MenuTabs/>
+      {globalSettings.showPredictionForm && <PredictionForm/>}
       <TileLayer
         attribution="&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -53,7 +57,6 @@ const AreaComponent = observer(({ item, title }: IAreaComponent) => {
   }
   const openCurrentSettingPanel = async () => {
     const resp = await getLastHistoryItem()
-    console.log(resp)
     globalSettings.lastHistoryDate = resp.data
     globalSettings.dateRange = globalEnvData.dataAr;
     globalSettings.currentAreaId = item.id;

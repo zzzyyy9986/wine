@@ -4,6 +4,8 @@ export enum WineParams {
     windSpeed = 'Скорость ветра',
     precipitation = 'Осадки',
 
+
+    //данные Тимура
     fixed_acidity = 'Фиксированная кислотность',
 
     volatile_acidity = 'Летучая кислота',

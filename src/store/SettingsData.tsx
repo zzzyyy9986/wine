@@ -14,6 +14,9 @@ class SettingsData {
 
   public lastHistoryDate:{[id:string]:IHistData} = {}
 
+  public showPredictionForm:boolean = false
+
+
 
   public settingWidth:number = 40;
 
