@@ -21,7 +21,6 @@ export const RangeComponent = () => {
         height: "30px",
         zIndex: 999,
         right: 30 + "px",
-        background: "red",
       }}
     >
       <Range
@@ -36,10 +35,9 @@ export const RangeComponent = () => {
           <div
             {...props}
             style={{
-              ...props.style,
-              height: "6px",
+              height: "3px",
               width: "100%",
-              backgroundColor: "#ccc",
+              backgroundColor: "#f6a6a6",
             }}
           >
             {children}
@@ -49,12 +47,16 @@ export const RangeComponent = () => {
           <div
             {...props}
             style={{
-              ...props.style,
               height: "42px",
               width: "42px",
-              backgroundColor: "#999",
             }}
-          />
+          >
+              <img width="100" height="100" src="https://img.icons8.com/sf-ultralight/100/wine-glass.png" alt="wine-glass"/>
+              <div style={{position:"absolute",width:38 + 'px',height:40*globalSettings.settingWidth/100 +'px',background:'#8c0808',top: 54 + 'px',
+                  right: -28 +'px',borderTopLeftRadius:15 + 'px',borderTopRightRadius:15+'px',transformOrigin:'top',transform:'rotate(180deg)'}}>
+
+              </div>
+          </div>
         )}
       />
     </div>

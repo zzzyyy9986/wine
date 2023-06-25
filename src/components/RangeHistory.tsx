@@ -24,7 +24,7 @@ export const RangeHistory = observer(() => {
   };
 
   return (
-    <div style={{height:800*globalSettings.settingWidth/100 +'px'}}>
+    <div style={{height:700*globalSettings.settingWidth/100 +'px'}}>
       <select
         className="form-control"
         value={globalSettings.currentHistoryDateStart}

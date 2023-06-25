@@ -2,19 +2,14 @@ import L, { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
   MapContainer,
-  Marker,
   Popup,
   TileLayer,
-  Rectangle,
-  useMapEvents,
   Polygon,
 } from "react-leaflet";
 import React from "react";
-import { IChocolate } from "./Chocolate";
 import { useStore } from "../store/store";
 import { observer } from "mobx-react-lite";
 import { IDataRow } from "../interfaces/IDataRow";
-import { CustomReact } from "./CustomReact";
 
 // import * as Popup from "../../node_modules/react-leaflet-editable-popup/build/EditablePopup";
 

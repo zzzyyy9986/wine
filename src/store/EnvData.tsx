@@ -31,6 +31,9 @@ export class EnvData {
   get dataAr(): IDataRow[] {
     return Object.keys(this.data).map((key) => this.data[key]);
   }
+  getItemByTitle(title:string){
+    return this.data[title]
+  }
   get currentItem() {
     return gSettings.currentAreaId
       ? this.getFullInfoById(gSettings.currentAreaId)
