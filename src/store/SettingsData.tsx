@@ -16,6 +16,8 @@ class SettingsData {
 
   public showPredictionForm:boolean = false
 
+  public showPredictionRes:boolean = false;
+
 
 
   public settingWidth:number = 40;
