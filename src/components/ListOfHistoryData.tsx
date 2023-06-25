@@ -5,7 +5,7 @@ import {NewCurrentChart} from "./NewChart";
 import {WineParams} from "../enums/WineParams";
 
 
-const getKey = (ob) => {
+export const getKey = (ob) => {
     return Object.keys(ob)[0]
 }
 export const ListOfHistoryData = observer(({ areaId }: { areaId: string }) => {

@@ -4,6 +4,7 @@ import {Bar} from 'react-chartjs-2';
 import {observer} from "mobx-react-lite";
 import {useStore} from "../store/store";
 import {WineParams} from "../enums/WineParams";
+import {getKey} from "./ListOfHistoryData";
 // import faker from 'faker';
 
 ChartJS.register(
@@ -146,16 +147,19 @@ export const NewChart = observer(() => {
     </div>)
 })
 
+
 export const NewCurrentChart = observer(() => {
     const { globalEnvData, globalSettings } = useStore();
-    const labels = [WineParams.airHumidity,WineParams.windSpeed,WineParams.precipitation,WineParams.temperature];
+    const labels = Object.keys(WineParams).map(el => el);
 
     const data = {
         labels:labels,
         datasets: [
             {
                 label: 'Dataset 1',
-                data: labels.map(() => [0,1,3]),
+                data: labels.map(el => {
+                    return globalSettings.lastHistoryDate[getKey(globalSettings.lastHistoryDate)][el]
+                }),
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
             },
         ],
