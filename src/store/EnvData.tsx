@@ -75,20 +75,7 @@ export class EnvData {
           [44.54135973451304, 38.08769955151419],
           [44.54188533930163, 38.08691634648183],
         ],
-        history: {
-          "2022-12-01": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-01": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-        },
+        history: {},
       },
       "виноградник №2": {
         id: uuidv4(),
@@ -99,20 +86,7 @@ export class EnvData {
           [44.54130191504547, 38.08778520277567],
           [44.54194693184983, 38.08860595873424],
         ],
-        history: {
-          "2022-12-01": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-01": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-        },
+        history: {},
       },
       "виноградник №3": {
         id: uuidv4(),
@@ -123,20 +97,7 @@ export class EnvData {
           [44.54111916490005, 38.08598437522463],
           [44.54178960069492, 38.08681049560126],
         ],
-        history: {
-          "2022-12-01": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-01": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-        },
+        history: {},
       },
       "виноградник №4": {
         id: uuidv4(),
@@ -147,20 +108,7 @@ export class EnvData {
           [44.54056775612128, 38.086799778575475],
           [44.541219974661516, 38.08766881429626],
         ],
-        history: {
-          "2022-12-01": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-01": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-        },
+        history: {},
       },
       "виноградник №5": {
         id: uuidv4(),
@@ -174,20 +122,7 @@ export class EnvData {
           [44.54055049058084, 38.0844250923365],
           [44.54104157360662, 38.08502590715584],
         ],
-        history: {
-          "2022-12-01": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-01": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-        },
+        history: {},
       },
       "виноградник №6": {
         id: uuidv4(),
@@ -198,20 +133,7 @@ export class EnvData {
           [44.539706418916104, 38.085741076406336],
           [44.5404967651518, 38.08672812932383],
         ],
-        history: {
-          "2022-12-01": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-01": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-        },
+        history: {},
       },
       "виноградник №7": {
         id: uuidv4(),
@@ -222,32 +144,7 @@ export class EnvData {
           [44.539706418916104, 38.085741076406336],
           [44.5404967651518, 38.08672812932383],
         ],
-        history: {
-          "2022-12-01": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-01": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-          "2022-12-03": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-04": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-        },
+        history: {},
       },
     };
     Object.keys(data).forEach((key) => {
@@ -262,6 +159,21 @@ export class HistData implements IHistData {
   public windSpeed: number = 0;
   //осадки
   public precipitation: number = 0;
+
+
+
+  public alcohol: number = 0
+  public chlorides: number = 0
+  public citric_acid: number = 0
+  public density: number = 0
+  public fixed_acidity: number = 0
+  public free_sulfur_dioxide: number = 0
+  public pH: number = 0
+  public residual_sugar: number = 0
+  public sulphates: number = 0
+  public total_sulfur_dioxide: number = 0
+  public volatile_acidity: number = 0
+  public winecolor:string = "white"
   constructor(row: IHistData) {
     this.temperature = row.temperature;
     this.airHumidity = row.airHumidity;

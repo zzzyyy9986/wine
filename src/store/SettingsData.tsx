@@ -1,5 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import {SettingPanel} from "../enums/SettingPanel";
+import {IHistData} from "../interfaces/IHistData";
 
 class SettingsData {
   public dateRange: any[] = [];
@@ -10,6 +11,8 @@ class SettingsData {
   public currentHistoryDateFinish: string = "";
   public currentPanel:SettingPanel = SettingPanel.current
   public showSettingPanel:boolean = false;
+
+  public lastHistoryDate:{[id:string]:IHistData} = {}
 
 
   public settingWidth:number = 40;

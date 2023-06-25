@@ -28,7 +28,9 @@ export const options = {
     },
 };
 
-
+const closeWindow = (gSet) => {
+    gSet.showSettingPanel = false
+}
 
 export const NewChart = observer(() => {
     const { globalEnvData, globalSettings } = useStore();
@@ -57,7 +59,84 @@ export const NewChart = observer(() => {
                 data: labels.map((key) =>{
                     return globalEnvData.data[globalSettings.currentAreaTitle].history[key].precipitation
                 } ),
-                backgroundColor: 'rgba(20,77,2,0.5)',
+                backgroundColor: 'rgba(11,17,8,0.5)',
+            },
+            {
+                label: 'Алкоголь',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].alcohol
+                } ),
+                backgroundColor: 'rgba(203,171,34,0.5)',
+            },
+            {
+                label: 'Фиксированная кислотность',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].fixed_acidity
+                } ),
+                backgroundColor: 'rgba(143,49,225,0.5)',
+            },
+            {
+                label: 'Летучая кислота',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].volatile_acidity
+                } ),
+                backgroundColor: 'rgba(157,6,116,0.5)',
+            },
+            {
+                label: 'Лимонная кислота',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].citric_acid
+                } ),
+                backgroundColor: 'rgba(239,145,218,0.5)',
+            },
+            {
+                label: 'Остаточный сахар',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].residual_sugar
+                } ),
+                backgroundColor: 'rgba(232,116,26,0.5)',
+            },
+            {
+                label: 'Хлорид',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].chlorides
+                } ),
+                backgroundColor: 'rgba(94,255,0,0.5)',
+            },
+            {
+                label: 'Свободный диоксид серы',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].free_sulfur_dioxide
+                } ),
+                backgroundColor: 'rgba(94,255,0,0.5)',
+            },
+            {
+                label: 'Суммарный диоксид серы',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].total_sulfur_dioxide
+                } ),
+                backgroundColor: 'rgba(77,3,3,0.5)',
+            },
+            {
+                label: 'Плотность',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].density
+                } ),
+                backgroundColor: 'rgba(255,100,0,0.5)',
+            },
+            {
+                label: 'Водородный показатель',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].pH
+                } ),
+                backgroundColor: 'rgba(0,236,146,0.5)',
+            },
+            {
+                label: 'Сульфаты',
+                data: labels.map((key) =>{
+                    return globalEnvData.data[globalSettings.currentAreaTitle].history[key].sulphates
+                } ),
+                backgroundColor: 'rgba(7,0,255,0.5)',
             },
         ],
     };

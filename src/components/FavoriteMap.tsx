@@ -6,6 +6,9 @@ import {useStore} from "../store/store";
 import {observer} from "mobx-react-lite";
 import {IDataRow} from "../interfaces/IDataRow";
 import {SettingPanel} from "../enums/SettingPanel";
+import axios from "axios";
+import {serverUrl} from "../env";
+import {getHistory, getLastHistoryItem} from "../queries";
 
 // import * as Popup from "../../node_modules/react-leaflet-editable-popup/build/EditablePopup";
 
@@ -42,7 +45,16 @@ export interface IAreaComponent {
 const AreaComponent = observer(({ item, title }: IAreaComponent) => {
   const { globalSettings, globalEnvData } = useStore();
 
-  const openCurrentSettingPanel = () => {
+  const getData = () => {
+    return axios.get(serverUrl + '/history')
+        .then((msg) => {
+          globalEnvData.data[title].history = msg.data
+        })
+  }
+  const openCurrentSettingPanel = async () => {
+    const resp = await getLastHistoryItem()
+    console.log(resp)
+    globalSettings.lastHistoryDate = resp.data
     globalSettings.dateRange = globalEnvData.dataAr;
     globalSettings.currentAreaId = item.id;
     globalSettings.currentAreaTitle = title;
@@ -50,7 +62,9 @@ const AreaComponent = observer(({ item, title }: IAreaComponent) => {
     globalSettings.showSettingPanel = true
 
   }
-  const openAreaInfo = () => {
+  const openAreaInfo =async () => {
+    const resp = await getHistory()
+    globalEnvData.data[title].history = resp.data;
     globalSettings.dateRange = globalEnvData.dataAr;
     globalSettings.currentAreaId = item.id;
     globalSettings.currentAreaTitle = title;
