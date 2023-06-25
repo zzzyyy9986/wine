@@ -1,4 +1,5 @@
-import { makeAutoObservable } from "mobx";
+import {makeAutoObservable} from "mobx";
+import {SettingPanel} from "../enums/SettingPanel";
 
 class SettingsData {
   public dateRange: any[] = [];
@@ -7,9 +8,11 @@ class SettingsData {
   public currentAreaTitle: string = "";
   public currentHistoryDateStart: string = "";
   public currentHistoryDateFinish: string = "";
+  public currentPanel:SettingPanel = SettingPanel.current
+  public showSettingPanel:boolean = false;
 
 
-  public settingWidth:number = 30;
+  public settingWidth:number = 40;
 
   constructor() {
     makeAutoObservable(this);

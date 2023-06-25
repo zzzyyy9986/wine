@@ -23,6 +23,9 @@ export const RangeHistory = observer(() => {
     globalSettings.currentHistoryDateStart = e.target.value;
   };
 
+  const closeSettingPanel = () => {
+      globalSettings.showSettingPanel = false;
+  }
   return (
       <div>
           <div className='row' style={{height:550*globalSettings.settingWidth/100 +'px'}}>
@@ -61,17 +64,14 @@ export const RangeHistory = observer(() => {
                           })}
                       </select>
                   </div>
-                  <button className='btn btn-warning'>Запросить</button>
+                  <div style={{textAlign:'right'}}>
+                      <button className='btn btn-warning'>Запросить</button>
+                  </div>
               </form>
               <div className="col-md-8">
                   <NewChart />
               </div>
           </div>
-          {/*<div className="row" >*/}
-          {/*    <div className="col-md-12">*/}
-          {/*        <NewChart />*/}
-          {/*    </div>*/}
-          {/*</div>*/}
       </div>
   );
 });

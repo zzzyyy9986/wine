@@ -1,17 +1,9 @@
 import React from 'react';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-import {Bar, Line} from 'react-chartjs-2';
+import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip,} from 'chart.js';
+import {Bar} from 'react-chartjs-2';
 import {observer} from "mobx-react-lite";
 import {useStore} from "../store/store";
-import {Chart} from "react-charts";
+import {WineParams} from "../enums/WineParams";
 // import faker from 'faker';
 
 ChartJS.register(
@@ -44,6 +36,7 @@ export const NewChart = observer(() => {
 
     const data = {
         labels:Object.keys(globalEnvData.getItemByTitle(globalSettings.currentAreaTitle).history),
+        title: 'ff',
         datasets: [
             {
                 label: 'Влажность воздуха',
@@ -70,6 +63,26 @@ export const NewChart = observer(() => {
     };
 
     return (<div style={{width:100+'%',height:70+'%'}}>
+        <Bar options={options} data={data} />
+    </div>)
+})
+
+export const NewCurrentChart = observer(() => {
+    const { globalEnvData, globalSettings } = useStore();
+    const labels = [WineParams.airHumidity,WineParams.windSpeed,WineParams.precipitation,WineParams.temperature];
+
+    const data = {
+        labels:labels,
+        datasets: [
+            {
+                label: 'Dataset 1',
+                data: labels.map(() => [0,1,3]),
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            },
+        ],
+    };
+
+    return (<div style={{width:100+'%',height:100+'%'}}>
         <Bar options={options} data={data} />
     </div>)
 })

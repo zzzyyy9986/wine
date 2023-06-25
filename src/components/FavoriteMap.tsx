@@ -1,15 +1,11 @@
-import L, { LatLngExpression } from "leaflet";
+import {LatLngExpression} from "leaflet";
 import "leaflet/dist/leaflet.css";
-import {
-  MapContainer,
-  Popup,
-  TileLayer,
-  Polygon,
-} from "react-leaflet";
+import {MapContainer, Polygon, Popup, TileLayer,} from "react-leaflet";
 import React from "react";
-import { useStore } from "../store/store";
-import { observer } from "mobx-react-lite";
-import { IDataRow } from "../interfaces/IDataRow";
+import {useStore} from "../store/store";
+import {observer} from "mobx-react-lite";
+import {IDataRow} from "../interfaces/IDataRow";
+import {SettingPanel} from "../enums/SettingPanel";
 
 // import * as Popup from "../../node_modules/react-leaflet-editable-popup/build/EditablePopup";
 
@@ -45,22 +41,34 @@ export interface IAreaComponent {
 
 const AreaComponent = observer(({ item, title }: IAreaComponent) => {
   const { globalSettings, globalEnvData } = useStore();
+
+  const openCurrentSettingPanel = () => {
+    globalSettings.dateRange = globalEnvData.dataAr;
+    globalSettings.currentAreaId = item.id;
+    globalSettings.currentAreaTitle = title;
+    globalSettings.currentPanel = SettingPanel.current;
+    globalSettings.showSettingPanel = true
+
+  }
   const openAreaInfo = () => {
     globalSettings.dateRange = globalEnvData.dataAr;
     globalSettings.currentAreaId = item.id;
     globalSettings.currentAreaTitle = title;
+    globalSettings.currentPanel = SettingPanel.history;
+    globalSettings.showSettingPanel = true
+
   };
   return (
     <Polygon key={item.id} positions={item.coordinates}>
       <Popup>
-        <div onClick={openAreaInfo}>
-          <button type="button" className="btn btn-warning">
+        <button type="button" onClick={openCurrentSettingPanel} className="btn btn-primary">
+          Текущее состояние
+        </button>
+        <div >
+          <button onClick={openAreaInfo} type="button" className="mt-2 btn btn-warning">
             История
           </button>
         </div>
-        <button type="button" className="btn btn-primary mt-2">
-          Текущее состояние
-        </button>
       </Popup>
     </Polygon>
   );

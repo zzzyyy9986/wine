@@ -59,6 +59,9 @@ export class EnvData {
       return el.id === id;
     })[0];
   }
+  getLastHistoryItemyByTitle(title:string){
+    return this.data[title].history[Object.keys(this.data[title].history).splice(-1)[0]]
+  }
   init() {
     const data: {
       [title: string]: IDataRow;
