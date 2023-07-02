@@ -10,7 +10,7 @@ export const MenuTabs = () => {
     }
 
     const openPredictionForm = async () => {
-        globalSettings.showPredictionForm = true;
+        globalSettings.showPredictionForm = !globalSettings.showPredictionForm;
     }
     return (
         <ul style={{position:'absolute',zIndex:999,right:50 +'%',top:2 +'%'}} className="list-group list-group-horizontal">
