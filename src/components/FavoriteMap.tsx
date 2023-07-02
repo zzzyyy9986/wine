@@ -55,8 +55,8 @@ const AreaComponent = observer(({ item, title }: IAreaComponent) => {
           globalEnvData.data[title].history = msg.data
         })
   }
-  const openCurrentSettingPanel = async () => {
-    const resp = await getLastHistoryItem()
+  const openCurrentSettingPanel = async (title:string) => {
+    const resp = await getLastHistoryItem({id:title})
     globalSettings.lastHistoryDate = resp.data
     globalSettings.dateRange = globalEnvData.dataAr;
     globalSettings.currentAreaId = item.id;
@@ -65,8 +65,10 @@ const AreaComponent = observer(({ item, title }: IAreaComponent) => {
     globalSettings.showSettingPanel = true
 
   }
-  const openAreaInfo =async () => {
-    const resp = await getHistory()
+  const openAreaInfo =async (title:string) => {
+    const resp = await getHistory({
+      id:title
+    })
     globalEnvData.data[title].history = resp.data;
     globalSettings.dateRange = globalEnvData.dataAr;
     globalSettings.currentAreaId = item.id;
@@ -78,11 +80,11 @@ const AreaComponent = observer(({ item, title }: IAreaComponent) => {
   return (
     <Polygon key={item.id} positions={item.coordinates}>
       <Popup>
-        <button type="button" onClick={openCurrentSettingPanel} className="btn btn-primary">
+        <button type="button" onClick={() => {openCurrentSettingPanel(title)}} className="btn btn-primary">
           Текущее состояние
         </button>
         <div >
-          <button onClick={openAreaInfo} type="button" className="mt-2 btn btn-warning">
+          <button onClick={() => {openAreaInfo(title)}} type="button" className="mt-2 btn btn-warning">
             История
           </button>
         </div>

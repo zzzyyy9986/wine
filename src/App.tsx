@@ -13,32 +13,6 @@ import {NewChart} from "./components/NewChart";
 
 const App = () => {
   const { globalEnvData } = useStore();
-  const addComponent = () => {
-    let item: { [id: string]: IDataRow } = {
-      "виноградник №2": {
-        id: uuidv4(),
-        coordinates: [
-          [59.91174337077401, 10.750425582038146],
-          [59.912, 10.756],
-        ],
-        history: {
-          "2022-12-01": {
-            temperature: 10,
-            airHumidity: 20,
-            windSpeed: 30,
-            precipitation: 40,
-          },
-          "2023-01-01": {
-            temperature: 30,
-            airHumidity: 50,
-            windSpeed: 20,
-            precipitation: 11,
-          },
-        },
-      },
-    };
-    globalEnvData.add("виноградник 2", item["виноградник №2"]);
-  };
 
   return (
     <div className="App">

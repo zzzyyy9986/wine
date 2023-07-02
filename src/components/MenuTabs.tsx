@@ -1,13 +1,15 @@
 import {useStore} from "../store/store";
+import {getHistory} from "../queries";
 
 export const MenuTabs = () => {
     const { globalEnvData,globalSettings } = useStore();
 
     const openTrello = ()=> {
+        // @ts-ignore
         window.open('https://trello.com/invite/b/2dYiItla/ATTI27d2cf321997b6f03fce72e0c5c653e2092CA72D/стратегическое-развитие ', '_blank').focus();
     }
 
-    const openPredictionForm = () => {
+    const openPredictionForm = async () => {
         globalSettings.showPredictionForm = true;
     }
     return (
